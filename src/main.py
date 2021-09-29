@@ -6,7 +6,9 @@ bot = commands.Bot(
     case_insensitive=True  # Commands aren't case-sensitive
 )
 
-bot.author_id = 0000000  # Change to your discord id!!!
+
+bot.author_id = 729411905399292075  # Discord ID of Martin
+# Discord ID of Léo : 375294792051195904
 
 @bot.event
 async def on_ready():  # When the bot is ready
