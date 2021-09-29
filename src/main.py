@@ -1,7 +1,7 @@
 import os
 from discord.ext import commands
-import discord
-from dotenv import load_dotenv
+import random
+
 
 bot = commands.Bot(
     command_prefix="!",  # Change to desired prefix
@@ -21,8 +21,24 @@ async def on_ready():  # When the bot is ready
 async def pong(ctx):
     await ctx.send('pong')
 
-# Load Token from the .env file
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+@bot.command()
+async def name(ctx):
+    await ctx.send(ctx.author)
+
+@bot.event
+async def on_message(message):
+    if message.content == "!hello":
+        await message.channel.send("pies are better than cakes. change my mind.")
+
+    await bot.process_commands(message)
+
+@bot.command()
+async def flipcoin(ctx):
+    pile_ou_face = ['Pile', 'Face']
+
+    choice = random.choice(pile_ou_face)
+
+    await ctx.send(choice)
+
 
 bot.run(token)  # Starts the bot
