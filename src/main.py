@@ -1,7 +1,8 @@
 import os
 from discord.ext import commands
 import random
-
+import discord
+from datetime import date
 
 bot = commands.Bot(
     command_prefix="!",  # Change to desired prefix
@@ -35,10 +36,24 @@ async def on_message(message):
 @bot.command()
 async def flipcoin(ctx):
     pile_ou_face = ['Pile', 'Face']
-
     choice = random.choice(pile_ou_face)
-
     await ctx.send(choice)
 
+@bot.command(pass_context=True)
+async def addrole(ctx, role: discord.Role, member: discord.Member=None):
+    member = member or ctx.message.author
+    await client.add_roles(member, role)
+
+@bot.command()
+async def ar(ctx, arg):
+    member = arg
+    var = discord.utils.get(message.guild.roles, name = "Admin")
+    member.add_role(var)
+
+# BONUS : time : command to get the today's date 
+@bot.command()
+async def time(ctx):
+    today = date.today()
+    await ctx.send(today) 
 
 bot.run(token)  # Starts the bot
