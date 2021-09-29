@@ -33,11 +33,6 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-@bot.command()
-async def flipcoin(ctx):
-    pile_ou_face = ['Pile', 'Face']
-    choice = random.choice(pile_ou_face)
-    await ctx.send(choice)
 
 @bot.command(pass_context=True)
 async def addrole(ctx, role: discord.Role, member: discord.Member=None):
@@ -72,5 +67,21 @@ async def time(ctx):
     today = date.today()
     await ctx.send(today) 
 
+# BONUS : flipcoin : command to flip a coin
+@bot.command()
+async def flipcoin(ctx):
+    pile_ou_face = ['Pile', 'Face']
+    choice = random.choice(pile_ou_face)
+    await ctx.send(choice)
+
+# BONUS : miroir : command to know if you are la plus belle of the kingdom
+@bot.command()
+async def miroir(ctx):
+    miroir = ['Ma reine, vous êtes la plus belle du royaume', 'Ma Reine, vous êtes vraiment laide, Blanche-Neige est la plus belle du royaume']
+    choice = random.choice(miroir)
+    await ctx.send('Miroir mon beau miroir, dis moi qui est la plus belle de ce royaume ?')
+    await ctx.send(choice)
+
+token = 'here is your token'
 
 bot.run(token)  # Starts the bot
