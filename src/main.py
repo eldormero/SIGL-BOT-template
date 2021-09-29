@@ -44,16 +44,26 @@ async def addrole(ctx, role: discord.Role, member: discord.Member=None):
     member = member or ctx.message.author
     await client.add_roles(member, role)
 
+
+
 @bot.command()
-async def ar(ctx, arg):
-    member = arg
+async def ar(ctx):
+    member = message.author
     var = discord.utils.get(message.guild.roles, name = "Admin")
-    member.add_role(var)
+    member.ar(var)
+
+# xkcd : get a random comic
+@bot.command(pass_context=True)
+async def xkcd(ctx):
+    url = "https://c.xkcd.com/random/comic/"
+    await ctx.send(url)
+
 
 # BONUS : time : command to get the today's date 
 @bot.command()
 async def time(ctx):
     today = date.today()
     await ctx.send(today) 
+
 
 bot.run(token)  # Starts the bot
