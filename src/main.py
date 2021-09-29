@@ -82,6 +82,14 @@ async def miroir(ctx):
     await ctx.send('Miroir mon beau miroir, dis moi qui est la plus belle de ce royaume ?')
     await ctx.send(choice)
 
+# tictactoe: print a already played game of tictactoe
+@bot.command()
+async def tictactoe(ctx):
+    await ctx.send('O|X|O')
+    await ctx.send('X|O|X')
+    await ctx.send('O|X|O')
+    await ctx.send('Player O win !')
+
 token = 'here is your token'
 
 bot.run(token)  # Starts the bot
