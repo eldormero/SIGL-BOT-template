@@ -52,11 +52,18 @@ async def ar(ctx):
     var = discord.utils.get(message.guild.roles, name = "Admin")
     member.ar(var)
 
+
 # xkcd : get a random comic
 @bot.command(pass_context=True)
 async def xkcd(ctx):
     url = "https://c.xkcd.com/random/comic/"
     await ctx.send(url)
+
+
+#ban : ban a member from the server
+@bot.command(pass_context=True)
+async def ban(ctx, member : discord.Member, *, reason = None):
+    await member.ban(reason = reason)
 
 
 # BONUS : time : command to get the today's date 
